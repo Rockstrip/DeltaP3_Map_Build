@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
+    <div>
+      <h2>Message for Unity</h2>
+      <input type="text" name="txtMessage" id="txtMessage" placeholder="City Name" />
+      <button onclick="sendMessageToUnity()">Send</button>
+    </div>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=600 height=600></canvas>
       <div id="unity-loading-bar">
@@ -117,6 +122,13 @@
         });
       };
       document.body.appendChild(script);
+
+   function sendMessageToUnity() {
+      const txtMessage = document.getElementById("txtMessage");
+      const message = txtMessage.value;
+      txtMessage.value = "";
+      unityInstance.SendMessage("Game Manager", "ReceiveMessageFromPage", message);
+    }
     </script>
   </body>
 </html>
