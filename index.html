@@ -10,7 +10,7 @@
   </head>
   <body>
     <div>
-      <h2>Message for Unity v0-003</h2>
+      <h2>Message for Unity v0-004</h2>
       <input type="text" name="txtMessage" id="txtMessage" placeholder="City Name" />
       <button onclick="sendMessageToUnity()">Send</button>
     </div>
@@ -118,7 +118,7 @@
           console.log(gameInstance);
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
-            unityInstance.SetFullscreen(1);
+            gameInstance.SetFullscreen(1);
           };
         }).catch((message) => {
           alert(message);
@@ -131,6 +131,7 @@
       const message = txtMessage.value;
       txtMessage.value = "";
       console.log(message);
+      console.log(gameInstance);
       gameInstance.SendMessage("Game Manager", "ReceiveMessageFromPage", message);
     }
     </script>
