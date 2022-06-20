@@ -10,9 +10,9 @@
   </head>
   <body>
     <div>
-      <h2>Message for Unity v0-000</h2>
+      <h2>Message for Unity</h2>
       <input type="text" name="txtMessage" id="txtMessage" placeholder="City Name" />
-      <button onclick="unityInstance.SendMessage('Game Manager', 'ReceiveMessageFromPage', 'London')">Send</button>
+      <button onclick="sendMessageToUnity()">Send</button>
     </div>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=600 height=600></canvas>
@@ -30,7 +30,6 @@
       </div>
     </div>
     <script>
-      var unityInstance = UnityLoader.instantiate("unity-container", "Build/_Build.json", {onProgress: UnityProgress});
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
@@ -123,6 +122,13 @@
         });
       };
       document.body.appendChild(script);
+
+   function sendMessageToUnity() {
+      const txtMessage = document.getElementById("txtMessage");
+      const message = txtMessage.value;
+      txtMessage.value = "";
+      unityInstance.SendMessage("Game Manager", "ReceiveMessageFromPage", message);
+    }
     </script>
   </body>
 </html>
