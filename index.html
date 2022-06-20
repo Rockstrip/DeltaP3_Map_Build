@@ -10,7 +10,7 @@
   </head>
   <body>
     <div>
-      <h2>Message for Unity v0-002</h2>
+      <h2>Message for Unity v0-003</h2>
       <input type="text" name="txtMessage" id="txtMessage" placeholder="City Name" />
       <button onclick="sendMessageToUnity()">Send</button>
     </div>
@@ -114,8 +114,8 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
-          console.log("createUnityInstance Then");
           gameInstance = unityInstance;
+          console.log(gameInstance);
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
