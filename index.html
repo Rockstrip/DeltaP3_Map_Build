@@ -10,7 +10,7 @@
   </head>
   <body>
     <div>
-      <h2>Message for Unity v0-004</h2>
+      <h2>Message for Unity v0-005</h2>
       <input type="text" name="txtMessage" id="txtMessage" placeholder="City Name" />
       <button onclick="sendMessageToUnity()">Send</button>
     </div>
@@ -132,7 +132,14 @@
       txtMessage.value = "";
       console.log(message);
       console.log(gameInstance);
-      gameInstance.SendMessage("Game Manager", "ReceiveMessageFromPage", message);
+      try
+      {
+        gameInstance.SendMessage("Game Manager", "ReceiveMessageFromPage", message);
+      }
+      catch(e)
+      {
+        console.log(e);
+      }
     }
     </script>
   </body>
