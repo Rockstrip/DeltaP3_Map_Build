@@ -11,13 +11,11 @@
   <body>
     <h2>Message for Unity v0-012</h2>
     <div>
-      <input type="text" name="AddPoint" id="AddPoint" placeholder="City Name" />
+      <input type="text" name="CityName" id="CityName" placeholder="City Name" />
       <button onclick="AddPoint()">AddPoint</button>
-    </div>
-    <div>
-      <input type="text" name="FocusPoint" id="FocusPoint" placeholder="City Name" />
       <button onclick="FocusPoint()">FocusPoint</button>
     </div>
+
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=600 height=600></canvas>
       <div id="unity-loading-bar">
@@ -130,7 +128,7 @@
       document.body.appendChild(script);
 
       function AddPoint() {
-      const txtMessage = document.getElementById("AddPoint");
+      const txtMessage = document.getElementById("CityName");
       const message = txtMessage.value;
       txtMessage.value = "";
       try
@@ -144,7 +142,7 @@
     } 
     
     function FocusPoint() {
-      const txtMessage = document.getElementById("FocusPoint");
+      const txtMessage = document.getElementById("CityName");
       const message = txtMessage.value;
       txtMessage.value = "";
       try
