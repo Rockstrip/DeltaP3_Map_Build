@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
-    <h2>Message for Unity v0-011</h2>
+    <h2>Message for Unity v0-01</h2>
+    <div>
+      <input type="text" name="AddPoint" id="AddPoint" placeholder="City Name" />
+      <button onclick="AddPoint()">AddPoint</button>
+    </div>
 
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=600 height=600></canvas>
@@ -122,6 +126,20 @@
       };
       document.body.appendChild(script);
 
+      function AddPoint() {
+      const txtMessage = document.getElementById("AddPoint");
+      const message = txtMessage.value;
+      txtMessage.value = "";
+      try
+      {
+        gameInstance.SendMessage("Game Manager", "AddPoint", message);
+      }
+      catch(e)
+      {
+        console.log(e);
+      }
+    } 
+    
     </script>
   </body>
 </html>
