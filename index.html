@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
-    <h2>Message for Unity v0-024</h2>
+    <h2>Message for Unity v0-025</h2>
     <div>
       <input type="text" name="CityName" id="CityName" placeholder="City Name" />
       <button onclick="AddPoint()">AddPoint</button>
@@ -130,7 +130,6 @@
       function AddPoint() {
       const txtMessage = document.getElementById("CityName");
       const message = txtMessage.value;
-      txtMessage.value = "";
       try
       {
         gameInstance.SendMessage("Game Manager", "AddPoint", message);
@@ -144,7 +143,6 @@
     function FocusPoint() {
       const txtMessage = document.getElementById("CityName");
       const message = txtMessage.value;
-      txtMessage.value = "";
       try
       {
         gameInstance.SendMessage("Game Manager", "FocusPoint", message);
