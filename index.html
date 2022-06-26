@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
+    <h2>Message for Unity v0-01</h2>
     <div>
-      <h2>Message for Unity v0-005</h2>
-      <input type="text" name="txtMessage" id="txtMessage" placeholder="City Name" />
-      <button onclick="sendMessageToUnity()">Send</button>
+      <input type="text" name="AddPoint" id="AddPoint" placeholder="City Name" />
+      <button onclick="AddPoint()">AddPoint</button>
+    </div>
+    <div>
+      <input type="text" name="FocusPoint" id="FocusPoint" placeholder="City Name" />
+      <button onclick="FocusPoint()">FocusPoint</button>
     </div>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=600 height=600></canvas>
@@ -115,7 +119,6 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           gameInstance = unityInstance;
-          console.log(gameInstance);
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             gameInstance.SetFullscreen(1);
@@ -126,15 +129,27 @@
       };
       document.body.appendChild(script);
 
-   function sendMessageToUnity() {
+      function AddPoint() {
       const txtMessage = document.getElementById("txtMessage");
       const message = txtMessage.value;
       txtMessage.value = "";
-      console.log(message);
-      console.log(gameInstance);
       try
       {
-        gameInstance.SendMessage("Game Manager", "ReceiveMessageFromPage", message);
+        gameInstance.SendMessage("Game Manager", "AddPoint", message);
+      }
+      catch(e)
+      {
+        console.log(e);
+      }
+    } 
+    
+    function FocusPoint() {
+      const txtMessage = document.getElementById("txtMessage");
+      const message = txtMessage.value;
+      txtMessage.value = "";
+      try
+      {
+        gameInstance.SendMessage("Game Manager", "FocusPoint", message);
       }
       catch(e)
       {
