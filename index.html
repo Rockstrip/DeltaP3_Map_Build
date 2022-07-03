@@ -11,7 +11,9 @@
   <body>
     <h2>Message for Unity v0-026</h2>
     <div>
-      <input type="text" name="CityName" id="CityName" placeholder="City Name" />
+      <input type="text" name="CityName" id="CityName" placeholder="City Name" />      
+      <input type="text" name="StateCode" id="StateCode" placeholder="State Code" />
+      <input type="text" name="CountryCode" id="CountryCode" placeholder="Country Code" />
       <button onclick="AddPoint()">AddPoint</button>
       <button onclick="FocusPoint()">FocusPoint</button>
     </div>
@@ -128,11 +130,18 @@
       document.body.appendChild(script);
 
       function AddPoint() {
-      const txtMessage = document.getElementById("CityName");
-      const message = txtMessage.value;
+      const name= document.getElementById("CityName").value;
+      const state = document.getElementById("StateCode").value;
+      const country = document.getElementById("CountryCode").value;
+      var json = new Object();
+      json.name = name;
+      json.state = state;
+      json.country = country;
+      var jsonString= JSON.stringify(json);
+      console.log(jsonString);
       try
       {
-        gameInstance.SendMessage("Game Manager", "AddPoint", message);
+        gameInstance.SendMessage("Game Manager", "AddPoint", jsonString);
       }
       catch(e)
       {
@@ -141,11 +150,17 @@
     } 
     
     function FocusPoint() {
-      const txtMessage = document.getElementById("CityName");
-      const message = txtMessage.value;
+      const name= document.getElementById("CityName").value;
+      const state = document.getElementById("StateCode").value;
+      const country = document.getElementById("CountryCode").value;
+      var json = new Object();
+      json.name = name;
+      json.state = state;
+      json.country = country;
+      var jsonString= JSON.stringify(json);
       try
       {
-        gameInstance.SendMessage("Game Manager", "FocusPoint", message);
+        gameInstance.SendMessage("Game Manager", "FocusPoint", jsonString);
       }
       catch(e)
       {
