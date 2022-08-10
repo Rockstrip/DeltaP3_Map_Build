@@ -9,13 +9,33 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
-    <h2>Message for Unity v0-01-17</h2>
+    <h2>Message for Unity v0-01-27</h2>
     <div>
       <input type="text" name="CityName" id="CityName" placeholder="City Name" />      
       <br>
       <input type="text" name="StateCode" id="StateCode" placeholder="State Name" />
       <br>
       <input type="text" name="CountryCode" id="CountryCode" placeholder="Country Code" />
+      <br>
+      <select name="AssetType" id="AssetType">
+        <option value="Education">Education</option>
+        <option value="Health">Health</option>
+        <option value="Other">Other</option>
+        <option value="Realestate">Realestate</option>
+        <option value="Renewable">Renewable</option>
+        <option value="Telecommunication">Telecommunication</option>
+        <option value="Water">Water</option>
+      </select>
+      <br>
+      <select name="ProjectStage" id="ProjectStage">
+        <option value="Approved">Approved</option>
+        <option value="Existing">Existing</option>
+        <option value="Idea">Idea</option>
+        <option value="Other">Other</option>
+        <option value="Preapproval">Preapproval</option>
+      </select>
+      <br>
+      <input type="text" name="PinLabel" id="PinLabel" placeholder="PinLabel" />
       <br>
       <button onclick="AddPoint()">AddPoint</button>
       <button onclick="FocusPoint()">FocusPoint</button>
@@ -136,10 +156,18 @@
       const name= document.getElementById("CityName").value;
       const state = document.getElementById("StateCode").value;
       const country = document.getElementById("CountryCode").value;
+      const assetType = document.getElementById("AssetType").value;
+      const projectStage = document.getElementById("ProjectStage").value;
+      const pinLabel = document.getElementById("PinLabel").value;
       var json = new Object();
-      json.name = name;
-      json.state = state;
-      json.country = country;
+      json.city = new Object();
+      json.city.name = name;
+      json.city.state = state;
+      json.city.country = country;
+      json.pin = new Object();
+      json.pin.assetType = assetType;
+      json.pin.projectStage = projectStage;
+      json.pin.label = pinLabel;
       var jsonString= JSON.stringify(json);
       console.log(jsonString);
       try
