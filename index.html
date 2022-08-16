@@ -14,18 +14,23 @@
       Enter Coord or City name
       <br>
       Coord:
+      <br>     
       <input type="text" name="Latitude" id="Latitude" placeholder="Latitude" />      
       <br>     
       <input type="text" name="Longitude" id="Longitude" placeholder="Longitude" />      
       <br>
       <br>
       City Name:
+      <br>     
       <input type="text" name="CityName" id="CityName" placeholder="City Name" />      
       <br>
       <input type="text" name="StateCode" id="StateCode" placeholder="State Name" />
       <br>
       <input type="text" name="CountryCode" id="CountryCode" placeholder="Country Code" />
       <br>
+      <br>
+      Pin:
+      <br>     
       <select name="AssetType" id="AssetType">
         <option value="Education">Education</option>
         <option value="Health">Health</option>
@@ -174,8 +179,8 @@
       if(latitude != "" && longitude != "")
       {
         json.coord = new Object();
-        json.coord.latitude = latitude;
-        json.coord.longitude = longitude;
+        json.coord.lat = latitude;
+        json.coord.lon = longitude;
       }
       else
       {
