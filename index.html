@@ -9,8 +9,17 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
-    <h2>Message for Unity v0-01-31</h2>
+    <h2>Message for Unity v0-01-32</h2>
     <div>
+      Enter Coord or City name
+      <br>
+      Coord:
+      <input type="text" name="Latitude" id="Latitude" placeholder="Latitude" />      
+      <br>     
+      <input type="text" name="Longitude" id="Longitude" placeholder="Longitude" />      
+      <br>
+      <br>
+      City Name:
       <input type="text" name="CityName" id="CityName" placeholder="City Name" />      
       <br>
       <input type="text" name="StateCode" id="StateCode" placeholder="State Name" />
@@ -153,6 +162,8 @@
       document.body.appendChild(script);
 
       function AddPoint() {
+      const latitude= document.getElementById("Latitude").value;
+      const longitude= document.getElementById("Longitude").value;
       const name= document.getElementById("CityName").value;
       const state = document.getElementById("StateCode").value;
       const country = document.getElementById("CountryCode").value;
@@ -160,10 +171,20 @@
       const projectStage = document.getElementById("ProjectStage").value;
       const pinLabel = document.getElementById("PinLabel").value;
       var json = new Object();
-      json.city = new Object();
-      json.city.name = name;
-      json.city.state = state;
-      json.city.country = country;
+      if(latitude != "" && longitude != "")
+      {
+        json.coord = new Object();
+        json.coord.latitude = latitude;
+        json.coord.longitude = longitude;
+      }
+      else
+      {
+        json.city = new Object();
+        json.city.name = name;
+        json.city.state = state;
+        json.city.country = country;
+      }
+
       json.pin = new Object();
       json.pin.assetType = assetType;
       json.pin.projectStage = projectStage;
